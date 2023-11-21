@@ -16,6 +16,13 @@ void strbuf_init(struct strbuf*sb,int alloc)
     sb->len=0;
     sb->alloc=alloc;
     sb->buf=(char *)malloc(sizeof(char)*alloc);
+    if (sb->buf == NULL) 
+    {
+        // Handle memory allocation failure
+        // For example, print an error message and exit the program
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
 }
 
 void strbuf_attach(struct strbuf*sb,char *s,int num_len,int num_alloc)
